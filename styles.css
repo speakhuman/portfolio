@@ -1,0 +1,793 @@
+/**
+ * Blog Styles
+ * @version 1.0.0
+ * @author Arif Furqon
+ * @description Main stylesheet for the blog, featuring responsive design
+ * and accessibility enhancements.
+ */
+
+/* ===== CSS Variables ===== */
+:root {
+    /* Typography - Define font families for consistent use throughout the site */
+    --font-primary: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; /* Main font with fallbacks */
+    --font-mono: "Roboto Mono", Consolas, "Courier New", monospace; /* Monospace font for code blocks */
+
+    /* Font sizes - Refined, smaller scale for consistent typography */
+    --text-xs: 0.75rem;    /* 12px - Extra small text for fine details */
+    --text-sm: 0.875rem;   /* 14px - Small text for secondary information */
+    --text-base: 1rem;     /* 16px - Base text size for paragraphs */
+    --text-lg: 1.125rem;   /* 18px - Large text for emphasis */
+    --text-xl: 1.25rem;    /* 20px - Extra large text for subheadings */
+    --text-2xl: 1.375rem;  /* 22px - Double extra large for minor headings */
+    --text-3xl: 1.5rem;    /* 24px - Triple extra large for major headings */
+    
+    /* Colors - Define color palette for consistent use throughout the site */
+    --color-bg-primary: #ffffff;                /* White background for main content areas */
+    --color-text-primary: #000000;              /* Black text for main content */
+    --color-text-secondary: #555555;            /* Dark gray for secondary text */
+    --color-text-tertiary: #666666;             /* Medium gray for tertiary text */
+    --color-border: #eeeeee;                    /* Light gray for borders */
+    --color-shadow: rgba(0, 0, 0, 0.08);        /* Subtle shadow for depth */
+    --color-overlay: rgba(0, 0, 0, 0.5);        /* Semi-transparent overlay for modal background */
+    --gradient-bg: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%); /* Subtle gradient for background */
+}
+
+/* ===== Base Styles ===== */
+* {
+    /* Reset all elements to have no margin or padding by default */
+    margin: 0;
+    padding: 0;
+    /* Use border-box model so padding doesn't affect width calculations */
+    box-sizing: border-box;
+}
+
+body {
+    /* Set the main font family from CSS variables */
+    font-family: var(--font-primary);
+    /* Set comfortable line height for readability */
+    line-height: 1.6;
+    /* Set text color from CSS variables */
+    color: var(--color-text-primary);
+    /* Apply gradient background from CSS variables */
+    background: var(--gradient-bg);
+    /* Ensure body takes at least full viewport height */
+    min-height: 100vh;
+    /* Set base font size from CSS variables */
+    font-size: var(--text-base);
+    /* Use flexbox for layout */
+    display: flex;
+    /* Stack children vertically */
+    flex-direction: column;
+    /* Center content vertically */
+    justify-content: center;
+}
+
+.container {
+    /* Limit maximum width for better readability on large screens */
+    max-width: 600px;
+    /* Center container horizontally */
+    margin: 0 auto;
+    /* Add padding around content */
+    padding: 2rem;
+    /* Ensure container takes full width up to max-width */
+    width: 100%;
+    /* Use flexbox for layout */
+    display: flex;
+    /* Stack children vertically */
+    flex-direction: column;
+    /* Ensure container takes at least full viewport height */
+    min-height: 100vh;
+    /* Center content vertically */
+    justify-content: center;
+}
+
+/* ===== Typography ===== */
+h1, h2, h3 {
+    /* Add space below headings */
+    margin-bottom: 1rem;
+    /* Tighter line height for headings */
+    line-height: 1.2;
+}
+
+h2 {
+    /* Set font size from CSS variables */
+    font-size: var(--text-2xl);
+    /* Add space below the text */
+    padding-bottom: 0.5rem;
+    /* Add more space below the element */
+    margin-bottom: 1.5rem;
+    /* Medium font weight for better readability */
+    font-weight: 500;
+}
+
+h3 {
+    /* Set font size from CSS variables */
+    font-size: var(--text-xl);
+}
+
+p {
+    /* Add space below paragraphs */
+    margin-bottom: 1rem;
+    /* Set font family from CSS variables */
+    font-family: var(--font-primary);
+    /* Set font size from CSS variables */
+    font-size: var(--text-base);
+}
+
+a {
+    /* Set link color from CSS variables */
+    color: var(--color-text-primary);
+    /* Remove default underline */
+    text-decoration: none;
+    /* Add subtle bottom border instead of underline */
+    border-bottom: 1px solid var(--color-text-primary);
+    /* Smooth transition for hover effect */
+    transition: opacity 0.3s ease;
+}
+
+a:hover {
+    /* Reduce opacity on hover for subtle effect */
+    opacity: 0.7;
+}
+
+/* ===== Header & Navigation ===== */
+/* Accessible navigation with proper focus states and semantic markup */
+header {
+    /* Add space below header */
+    margin-bottom: 2rem;
+    /* Add space above header */
+    margin-top: 2rem;
+}
+
+nav {
+    /* Use flexbox for layout */
+    display: flex;
+    /* Align items to the top */
+    align-items: flex-start;
+    /* Align items to the left */
+    justify-content: flex-start;
+    /* Take full width */
+    width: 100%;
+}
+
+.nav-container {
+    /* Use flexbox for layout */
+    display: flex;
+    /* Add space between navigation items */
+    gap: 1rem;
+    /* Set font family from CSS variables */
+    font-family: var(--font-primary);
+    /* Set font size from CSS variables */
+    font-size: var(--text-base);
+    /* Remove default margin */
+    margin: 0;
+    /* Take full width */
+    width: 100%;
+    /* Center items vertically */
+    align-items: center;
+}
+
+.nav-btn {
+    /* Add vertical padding, no horizontal padding */
+    padding: 0.5rem 0;
+    /* Remove default button border */
+    border: none;
+    /* Transparent background */
+    background: transparent;
+    /* Set text color from CSS variables */
+    color: var(--color-text-secondary);
+    /* Smooth transition for hover effect */
+    transition: color 0.2s ease;
+    /* Set font size from CSS variables */
+    font-size: var(--text-lg);
+    /* Medium font weight */
+    font-weight: 500;
+    /* Show pointer cursor on hover */
+    cursor: pointer;
+    /* Remove default link underline */
+    text-decoration: none;
+    /* Make link behave like a block for better clickability */
+    display: inline-block;
+}
+
+.nav-btn:focus {
+    /* Add visible outline for keyboard focus */
+    outline: 2px solid #000;
+    /* Add space between outline and element */
+    outline-offset: 3px;
+}
+
+.nav-btn.active {
+    /* Set active link color from CSS variables */
+    color: var(--color-text-primary);
+    /* Make active link bold */
+    font-weight: 600;
+}
+
+.nav-btn:hover {
+    /* Change color on hover */
+    color: var(--color-text-primary);
+}
+
+/* ===== Main Content ===== */
+main {
+    /* Add space below main content */
+    margin-bottom: 3rem;
+    /* Allow main to grow and take available space */
+    flex: 1;
+    /* Use flexbox for layout */
+    display: flex;
+    /* Stack children vertically */
+    flex-direction: column;
+    /* Center content vertically */
+    justify-content: center;
+}
+
+/* Base styles for all HTML section elements regardless of class */
+section {
+    /* Take full width */
+    width: 100%;
+}
+
+/* Styles for the introductory paragraph in the writing section */
+.section-intro {
+    /* Set font size */
+    font-size: 1rem;
+    /* Set text color from CSS variables */
+    color: var(--color-text-secondary);
+    /* Add space below intro */
+    margin-bottom: 2rem;
+    /* Normal font weight */
+    font-weight: 400;
+    /* Comfortable line height for readability */
+    line-height: 1.6;
+}
+
+/* Specific styles for sections with the .section class (used for tab switching) */
+.section {
+    /* Hide sections by default - they'll be shown when active */
+    display: none;
+}
+
+.section.active {
+    /* Show active section */
+    display: flex;
+    /* Stack children vertically */
+    flex-direction: column;
+    /* Center content vertically */
+    justify-content: center;
+    /* Add fade-in animation */
+    animation: fadeIn 0.5s ease;
+    /* Ensure section takes at least 60% of viewport height */
+    min-height: 60vh;
+}
+
+@keyframes fadeIn {
+    /* Start with opacity 0 */
+    from { opacity: 0; }
+    /* End with opacity 1 */
+    to { opacity: 1; }
+}
+
+/* ===== Home Sections ===== */
+.home-section {
+    /* Add space below home section */
+    margin-bottom: 3rem;
+    /* Use flexbox for layout */
+    display: flex;
+    /* Stack children vertically */
+    flex-direction: column;
+    /* Align items to the left */
+    align-items: flex-start;
+    /* Left-align text */
+    text-align: left;
+}
+
+.left-aligned-heading {
+    /* Left-align text */
+    text-align: left;
+    /* Remove bottom margin */
+    margin-bottom: 0;
+    /* Remove top margin */
+    margin-top: 0;
+    /* Set font family from CSS variables */
+    font-family: var(--font-primary);
+    /* Responsive font size that scales with viewport width */
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    /* Semi-bold font weight */
+    font-weight: 600;
+    /* Slightly negative letter spacing for tighter text */
+    letter-spacing: -0.02em;
+    /* Tight line height for headings */
+    line-height: 1;
+}
+
+/* Ensure h1 and h2 with this class look the same */
+h1.left-aligned-heading,
+h2.left-aligned-heading {
+    /* Responsive font size that scales with viewport width */
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+}
+
+/* ===== Profile Section ===== */
+.profile {
+    /* Use flexbox for layout */
+    display: flex;
+    /* Stack children vertically */
+    flex-direction: column;
+    /* Align items to the left */
+    align-items: flex-start;
+    /* Add space above profile */
+    margin-top: 1rem;
+}
+
+.name-title {
+    /* Add small space below name-title container */
+    margin-bottom: 0.25rem;
+}
+
+.name {
+    /* Set font size from CSS variables */
+    font-size: var(--text-xl);
+    /* Medium font weight */
+    font-weight: 500;
+    /* Remove bottom margin */
+    margin-bottom: 0;
+    /* Slightly negative letter spacing for tighter text */
+    letter-spacing: -0.01em;
+}
+
+.title {
+    /* Set font size from CSS variables */
+    font-size: var(--text-lg);
+    /* Normal font weight */
+    font-weight: 400;
+    /* Set text color from CSS variables */
+    color: var(--color-text-secondary);
+    /* Add space below title */
+    margin-bottom: 1.25rem;
+    /* Slightly positive letter spacing for better readability */
+    letter-spacing: 0.01em;
+}
+
+.bio {
+    /* Limit maximum width for better readability */
+    max-width: 500px;
+    /* Add space below bio */
+    margin-bottom: 2rem;
+    /* Comfortable line height for readability */
+    line-height: 1.6;
+}
+
+.social-links {
+    /* Use flexbox for layout */
+    display: flex;
+    /* Add space between social links */
+    gap: 1.5rem;
+    /* Add space above social links */
+    margin-top: 0.5rem;
+}
+
+.social-link {
+    /* Set link color from CSS variables */
+    color: var(--color-text-primary);
+    /* Remove default link underline */
+    text-decoration: none;
+    /* Remove bottom border */
+    border-bottom: none;
+    /* Medium font weight */
+    font-weight: 500;
+    /* Smooth transition for hover effects */
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    /* Add vertical padding for larger click target */
+    padding: 0.5rem 0;
+}
+
+.social-link:hover {
+    /* Reduce opacity on hover */
+    opacity: 0.7;
+    /* Slight upward movement on hover */
+    transform: translateY(-2px);
+}
+
+/* ===== Posts ===== */
+/* Blog post listings with animations and hover effects */
+#posts-container {
+    /* Set minimum height to prevent layout shift while loading */
+    min-height: 200px;
+}
+
+.post-preview {
+    /* Add space below post preview */
+    margin-bottom: 2rem;
+    /* Add padding below post preview */
+    padding-bottom: 2rem;
+    /* Add border below post preview */
+    border-bottom: 1px solid var(--color-border);
+    /* Start with opacity 0 for animation */
+    opacity: 0;
+    /* Start with downward offset for animation */
+    transform: translateY(20px);
+    /* Smooth transition for animation */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Hover effect for posts */
+.post-preview:hover {
+    /* Slight upward movement on hover */
+    transform: translateY(-2px);
+    /* Add subtle shadow on hover */
+    box-shadow: 0 4px 12px var(--color-shadow);
+}
+
+.post-header {
+    /* Use flexbox for layout */
+    display: flex;
+    /* Center items vertically */
+    align-items: center;
+    /* Add space below post header */
+    margin-bottom: 0.5rem;
+    /* Prevent items from wrapping to next line */
+    flex-wrap: nowrap;
+}
+
+.post-header h3 {
+    /* Remove default margin */
+    margin: 0;
+    /* Display as inline element */
+    display: inline;
+}
+
+.date {
+    /* Set font size from CSS variables */
+    font-size: var(--text-sm);
+    /* Set text color from CSS variables */
+    color: var(--color-text-secondary);
+    /* Add space to the right of date */
+    margin-right: 1rem;
+    /* Italic style for dates */
+    font-style: italic;
+    /* Set minimum width to ensure alignment */
+    min-width: 80px;
+    /* Prevent date from wrapping */
+    white-space: nowrap;
+}
+
+.post-footer {
+    /* Use flexbox for layout */
+    display: flex;
+    /* Space items apart, pushing to edges */
+    justify-content: space-between;
+    /* Center items vertically */
+    align-items: center;
+    /* Add space above post footer */
+    margin-top: 1rem;
+}
+
+.read-time {
+    /* Set font size from CSS variables */
+    font-size: var(--text-xs);
+    /* Set text color from CSS variables */
+    color: var(--color-text-secondary);
+    /* Remove default margin */
+    margin: 0;
+}
+
+.read-more {
+    /* Display as inline-block for better control */
+    display: inline-block;
+    /* Add space above read more link */
+    margin-top: 0.5rem;
+    /* Semi-bold font weight */
+    font-weight: 600;
+}
+
+/* ===== Footer ===== */
+footer {
+    /* Center text horizontally */
+    text-align: center;
+    /* Add padding above footer */
+    padding-top: 2rem;
+    /* Add border above footer */
+    border-top: 1px solid var(--color-border);
+    /* Set font size from CSS variables */
+    font-size: var(--text-base);
+    /* Set text color from CSS variables */
+    color: var(--color-text-secondary);
+    /* Set font family from CSS variables */
+    font-family: var(--font-primary);
+}
+
+/* ===== Modal Styles ===== */
+/* Accessible modal implementation with keyboard navigation and focus management */
+.modal {
+  /* Hide modal by default */
+  display: none;
+  /* Fix position to viewport */
+  position: fixed;
+  /* Position at top of viewport */
+  top: 0;
+  /* Position at left of viewport */
+  left: 0;
+  /* Take full viewport width */
+  width: 100%;
+  /* Take full viewport height */
+  height: 100%;
+  /* Semi-transparent background overlay */
+  background: var(--color-overlay);
+  /* Ensure modal appears above other content */
+  z-index: 1000;
+  /* Allow scrolling for tall content */
+  overflow-y: auto;
+  /* Add fade-in animation */
+  animation: fadeIn 0.2s ease;
+}
+
+.modal.active {
+  /* Show modal when active */
+  display: flex;
+  /* Align modal content to top */
+  align-items: flex-start;
+  /* Center modal content horizontally */
+  justify-content: center;
+  /* Add padding around modal content */
+  padding: 2rem 1rem;
+}
+
+.modal-content {
+  /* White background for modal content */
+  background: var(--color-bg-primary);
+  /* Rounded corners */
+  border-radius: 8px;
+  /* Maximum width for readability */
+  max-width: 700px;
+  /* Take full width up to max-width */
+  width: 100%;
+  /* Allow positioning of close button */
+  position: relative;
+  /* Add padding around content */
+  padding: 3rem 2.5rem;
+  /* Add vertical margin */
+  margin: 2rem 0;
+  /* Add slide-down animation */
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  /* Start with opacity 0 and upward offset */
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  /* End with opacity 1 and no offset */
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-close {
+  /* Position absolutely within modal-content */
+  position: absolute;
+  /* Position from top */
+  top: 1.5rem;
+  /* Position from right */
+  right: 1.5rem;
+  /* No background */
+  background: none;
+  /* No border */
+  border: none;
+  /* Large font size for × symbol */
+  font-size: 2rem;
+  /* Set text color from CSS variables */
+  color: var(--color-text-tertiary);
+  /* Show pointer cursor on hover */
+  cursor: pointer;
+  /* Tight line height for × symbol */
+  line-height: 1;
+  /* No padding */
+  padding: 0;
+  /* Fixed width for better clickability */
+  width: 32px;
+  /* Fixed height for better clickability */
+  height: 32px;
+  /* Smooth transition for hover effect */
+  transition: color 0.2s ease;
+}
+
+.modal-close:focus {
+  /* Add visible outline for keyboard focus */
+  outline: 2px solid #000;
+  /* Change color when focused */
+  color: var(--color-text-primary);
+}
+
+.modal-close:hover {
+  /* Change color on hover */
+  color: #000;
+}
+
+.post-full-header {
+  /* Add space below post header */
+  margin-bottom: 2rem;
+  /* Add padding below post header */
+  padding-bottom: 1.5rem;
+  /* Add border below post header */
+  border-bottom: 1px solid var(--color-border);
+}
+
+.post-full-header .date {
+  /* Set text color from CSS variables */
+  color: var(--color-text-tertiary);
+  /* Set font size */
+  font-size: 0.875rem;
+  /* Display as block element */
+  display: block;
+  /* Add space below date */
+  margin-bottom: 0.5rem;
+}
+
+.post-full-header h2 {
+  /* Remove default margin */
+  margin: 0;
+  /* Set font size */
+  font-size: 2rem;
+  /* Comfortable line height for headings */
+  line-height: 1.2;
+  /* Add space below heading */
+  margin-bottom: 0.5rem;
+}
+
+.post-full-header .read-time {
+  /* Set text color from CSS variables */
+  color: var(--color-text-secondary);
+  /* Set font size */
+  font-size: 0.875rem;
+  /* Remove default margin */
+  margin: 0;
+}
+
+.post-full-content {
+  /* Comfortable line height for readability */
+  line-height: 1.7;
+  /* Set text color from CSS variables */
+  color: var(--color-text-primary);
+}
+
+/* ===== High Contrast Mode Support ===== */
+@media (forced-colors: active) {
+  /* Ensure interactive elements have clear focus indicators in high contrast mode */
+  a:focus,
+  button:focus {
+    /* Add thick outline for high contrast mode */
+    outline: 3px solid SelectedItem;
+  }
+  
+  /* Ensure borders remain visible in high contrast mode */
+  .post-preview,
+  .modal-content,
+  .post-full-header {
+    /* Add solid border that works in high contrast mode */
+    border: 1px solid CanvasText;
+  }
+}
+
+.post-full-content p {
+  /* Add extra space below paragraphs in full post */
+  margin-bottom: 1.5rem;
+}
+
+.post-full-content h3 {
+  /* Add extra space above subheadings in full post */
+  margin-top: 2rem;
+  /* Add space below subheadings in full post */
+  margin-bottom: 1rem;
+  /* Set font size for subheadings in full post */
+  font-size: 1.25rem;
+}
+
+/* ===== Accessibility Enhancements ===== */
+/*
+ * The following styles implement accessibility best practices:
+ * 1. Respects prefers-reduced-motion for users sensitive to motion
+ * 2. Provides visible focus indicators for keyboard navigation
+ * 3. Implements skip links for keyboard users to bypass navigation
+ * 4. Ensures sufficient color contrast for text readability
+ * 5. Implements high contrast mode support for Windows users
+ */
+@media (prefers-reduced-motion: reduce) {
+    /* Disable section transition animation for users who prefer reduced motion */
+    .section.active {
+        animation: none;
+    }
+    
+    /* Disable modal animation for users who prefer reduced motion */
+    .modal-content {
+        animation: none;
+    }
+    
+    /* Disable post preview animation for users who prefer reduced motion */
+    .post-preview {
+        transition: none;
+    }
+    
+    /* Disable social link animation for users who prefer reduced motion */
+    .social-link {
+        transition: none;
+    }
+}
+
+/* Focus styles for interactive elements */
+a:focus,
+button:focus {
+    /* Add visible outline for keyboard focus */
+    outline: 2px solid #000;
+    /* Add space between outline and element */
+    outline-offset: 3px;
+}
+
+/* Skip link for keyboard navigation */
+.skip-link {
+    /* Position absolutely */
+    position: absolute;
+    /* Hide off-screen by default */
+    top: -40px;
+    /* Position from left */
+    left: 0;
+    /* Black background for visibility */
+    background: #000;
+    /* White text for contrast */
+    color: white;
+    /* Add padding for better clickability */
+    padding: 8px;
+    /* Ensure appears above other content */
+    z-index: 100;
+    /* Smooth transition for appearance */
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+    /* Move into view when focused */
+    top: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    /* Reduce container padding on small screens */
+    .container {
+        padding: 1rem;
+    }
+    
+    /* Adjust h2 font size on small screens */
+    h2 {
+        font-size: var(--text-2xl);
+    }
+    
+    /* Adjust h3 font size on small screens */
+    h3 {
+        font-size: var(--text-xl);
+    }
+    
+    /* Mobile modal styles - overrides only */
+    /* Reduce modal padding on small screens */
+    .modal-content {
+        padding: 2rem 1.5rem;
+        margin: 1rem 0;
+    }
+    
+    /* Reduce post title font size on small screens */
+    .post-full-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    /* Stack post header elements vertically on small screens */
+    .post-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    /* Add space below date on small screens */
+    .date {
+        margin-bottom: 0.25rem;
+    }
+}

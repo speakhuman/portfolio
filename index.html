@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speak Human - Arif Furqon</title>
+    <meta name="description" content="Front-End Engineer making technology speak human through elegant, intuitive interfaces">
+    
+    <!-- Performance optimizations: preconnect and preload -->
+    <!-- Establish early connections to font domains to reduce loading time -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Preload critical resources with high priority -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="main.js" as="script">
+    
+    <!-- Font with display=swap for better perceived performance -->
+    <!-- Load fonts with non-blocking strategy using media="print" and JS onload -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <!-- Fallback for browsers that don't support JS loading of CSS -->
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+    </noscript>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Accessibility skip link - allows keyboard users to bypass navigation -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Main container for all page content -->
+    <div class="container">
+        <!-- Header section containing navigation -->
+        <header>
+            <!-- Navigation menu -->
+            <nav>
+                <!-- Container for navigation links -->
+                <div class="nav-container">
+                    <!-- Navigation links with data-target attributes for JavaScript section switching -->
+                    <a href="#home" class="nav-btn active" data-target="home">Home</a>
+                    <a href="#writing" class="nav-btn" data-target="writing">Writing</a>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Main content area - target of the skip link -->
+        <main id="main-content">
+            <!-- Home section - active by default -->
+            <section id="home" class="section active">
+                <!-- Container for home section content -->
+                <div class="home-section">
+                    <!-- Main heading split across three lines for visual effect -->
+                    <!-- Using proper heading hierarchy with H1 for main heading -->
+                    <h1 class="left-aligned-heading">Technology</h1>
+                    <h2 class="left-aligned-heading">should</h2>
+                    <h2 class="left-aligned-heading">speak human</h2>
+                    
+                    <!-- Profile information section -->
+                    <div class="profile">
+                        <!-- Container for name element -->
+                        <div class="name-title">
+                            <h2 class="name">Arif Furqon</h2>
+                        </div>
+                        <!-- Job title as subheading -->
+                        <h3 class="title">Front-End Engineer</h3>
+                        <!-- Short biography paragraph -->
+                        <p class="bio">I'm always evolving, exploring new approaches and discovering elegant solutions.</p>
+                        <!-- Social media links -->
+                        <div class="social-links">
+                            <a href="https://github.com/speakhuman" class="social-link">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Writing/blog section - not active by default -->
+            <section id="writing" class="section">
+                <!-- Introductory text for the writing section -->
+                <p class="section-intro">Thoughts on design, code, and making technology speak human.</p>
+                <!-- Container where blog posts will be dynamically loaded by JavaScript -->
+                <div id="posts-container">
+                    <!-- Posts will be loaded here dynamically -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer section with copyright information -->
+        <footer>
+            <p>&copy; 2025 speakhuman.dev</p>
+        </footer>
+    </div>
+
+    <!-- Modal for full post view - hidden by default -->
+    <div id="post-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+      <!-- Modal content container -->
+      <div class="modal-content">
+        <!-- Close button with accessible label -->
+        <button class="modal-close" aria-label="Close modal">&times;</button>
+        <!-- Article element for the full blog post -->
+        <article class="post-full">
+          <!-- Header section for the blog post -->
+          <div class="post-full-header">
+            <!-- Elements populated by JavaScript when a post is opened -->
+            <span class="date" id="modal-date"></span>
+            <h2 id="modal-title"></h2>
+            <p class="read-time" id="modal-read-time"></p>
+          </div>
+          <!-- Container for post content, populated by JavaScript -->
+          <div class="post-full-content" id="modal-content"></div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Link to JavaScript file that provides functionality -->
+    <script src="main.js"></script>
+</body>
+</html>
