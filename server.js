@@ -69,11 +69,10 @@ const server = http.createServer((req, res) => {
   });
 });
 
-// Start the server on an available port
-findAvailablePort(3000, (port) => {
-  server.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}/`);
-    console.log(`Open this URL in your browser to view the blog`);
+  const PORT = process.env.PORT || 3000;
+  server.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}/`);
+    console.log(`Open this URL in your browser to view the blog `);
     console.log(`Press Ctrl+C to stop the server`);
   });
 });
