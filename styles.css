@@ -7,6 +7,7 @@
  */
 
 /* ===== CSS Variables ===== */
+/* Light theme (default) */
 :root {
     /* Typography - Define font families for consistent use throughout the site */
     --font-primary: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; /* Main font with fallbacks */
@@ -21,7 +22,7 @@
     --text-2xl: 1.375rem;  /* 22px - Double extra large for minor headings */
     --text-3xl: 1.5rem;    /* 24px - Triple extra large for major headings */
     
-    /* Colors - Define color palette for consistent use throughout the site */
+    /* Light theme colors */
     --color-bg-primary: #ffffff;                /* White background for main content areas */
     --color-text-primary: #000000;              /* Black text for main content */
     --color-text-secondary: #555555;            /* Dark gray for secondary text */
@@ -30,6 +31,30 @@
     --color-shadow: rgba(0, 0, 0, 0.08);        /* Subtle shadow for depth */
     --color-overlay: rgba(0, 0, 0, 0.5);        /* Semi-transparent overlay for modal background */
     --gradient-bg: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%); /* Subtle gradient for background */
+    --color-gray-100: #f5f5f5;                  /* Very light gray for backgrounds */
+    
+    /* Theme toggle specific */
+    --toggle-bg: #f0f0f0;
+    --toggle-border: #dddddd;
+    --toggle-icon: #555555;
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+    --color-bg-primary: #121212;                /* Dark background for main content areas */
+    --color-text-primary: #ffffff;              /* White text for main content */
+    --color-text-secondary: #aaaaaa;            /* Light gray for secondary text */
+    --color-text-tertiary: #888888;             /* Medium gray for tertiary text */
+    --color-border: #333333;                    /* Dark gray for borders */
+    --color-shadow: rgba(0, 0, 0, 0.2);         /* Stronger shadow for depth */
+    --color-overlay: rgba(0, 0, 0, 0.7);        /* Darker semi-transparent overlay */
+    --gradient-bg: linear-gradient(135deg, #1a1a1a 0%, #121212 100%); /* Subtle dark gradient */
+    --color-gray-100: #2a2a2a;                  /* Dark gray for backgrounds */
+    
+    /* Theme toggle specific */
+    --toggle-bg: #333333;
+    --toggle-border: #444444;
+    --toggle-icon: #ffffff;
 }
 
 /* ===== Base Styles ===== */
@@ -165,6 +190,40 @@ nav {
     width: 100%;
     /* Center items vertically */
     align-items: center;
+    justify-content: space-between;
+}
+
+/* Logo styles */
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-bottom: none;
+    margin-right: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+.logo-svg {
+    color: var(--color-text-primary);
+    width: 32px;
+    height: 32px;
+}
+
+[data-theme="dark"] .logo-svg {
+    color: var(--color-text-primary);
+}
+
+/* Navigation links container */
+.nav-links {
+    display: flex;
+    gap: 1rem;
+    margin-left: auto; /* Push nav links to the right */
 }
 
 .nav-btn {
@@ -746,9 +805,88 @@ button:focus {
     transition: top 0.2s ease;
 }
 
+/* Screen reader only class - visually hidden but accessible to screen readers */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 .skip-link:focus {
     /* Move into view when focused */
     top: 0;
+}
+
+/* ===== Theme Toggle ===== */
+.theme-toggle {
+    background: var(--toggle-bg, #f0f0f0);
+    border: 1px solid var(--toggle-border, #dddddd);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    margin-left: auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+.theme-toggle:focus {
+    outline: 2px solid var(--color-text-primary);
+    outline-offset: 2px;
+}
+
+.theme-toggle-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+/* Show/hide icons based on theme */
+/* Light mode (default) */
+.light-icon {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.dark-icon {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+}
+
+/* Dark mode */
+[data-theme="dark"] .light-icon {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+}
+
+[data-theme="dark"] .dark-icon {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Smooth transition for theme changes */
+body {
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* Responsive */
@@ -790,4 +928,242 @@ button:focus {
     .date {
         margin-bottom: 0.25rem;
     }
+}
+
+/* ===== Projects Section ===== */
+/* Project filters for category selection */
+.project-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--color-text-primary); /* Ensure good contrast in all themes */
+}
+
+.filter-btn:hover {
+  background: var(--color-gray-100);
+}
+
+.filter-btn.active {
+  background: var(--color-text-primary);
+  color: var(--color-bg-primary);
+  font-weight: 600; /* Make active button text bold for better visibility */
+}
+
+/* Specific dark mode improvements for filter buttons */
+[data-theme="dark"] .filter-btn {
+  color: var(--color-text-primary); /* Ensure white text in dark mode */
+  border: 1px solid var(--color-text-secondary); /* Lighter border for better visibility */
+}
+
+[data-theme="dark"] .filter-btn:hover {
+  background: var(--color-gray-100); /* #2a2a2a in dark mode */
+}
+
+/* Enhanced active state for dark mode */
+[data-theme="dark"] .filter-btn.active {
+  background: rgba(255, 255, 255, 0.85); /* Softer white background (85% opacity) */
+  color: #121212; /* Keep dark text for contrast */
+  box-shadow: 0 0 0 2px var(--color-text-secondary); /* Add outline effect for better focus visibility */
+  position: relative; /* Enable positioning for pseudo-element */
+}
+
+/* Add a visited state for buttons that were previously active */
+[data-theme="dark"] .filter-btn:not(.active) {
+  transition: background 0.3s ease;
+}
+
+/* Add a specific class for previously active buttons */
+[data-theme="dark"] .filter-btn.was-active {
+  background: rgba(255, 255, 255, 0.1); /* Very subtle background */
+  border-color: rgba(255, 255, 255, 0.3); /* Slightly enhanced border */
+}
+
+/* Add focus styles for keyboard navigation */
+.filter-btn:focus-visible {
+  outline: 2px solid var(--color-text-primary);
+  outline-offset: 2px;
+}
+
+/* Project container and cards */
+#projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.project-card {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.project-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px var(--color-shadow);
+}
+
+.project-thumbnail {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.project-info {
+  padding: 1.5rem;
+}
+
+.project-title {
+  font-size: var(--text-xl);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.project-description {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  margin-bottom: 1rem;
+}
+
+/* Technology tags for projects */
+.technology-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tech-tag {
+  font-size: var(--text-xs);
+  background: var(--color-gray-100);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+}
+
+/* GitHub Stats Styles */
+.github-stats {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.github-stats-loading {
+  font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+  font-style: italic;
+}
+
+.github-stats-error {
+  font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+  font-style: italic;
+}
+
+.github-stats-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.github-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.github-stat-value {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.github-stat-label {
+  font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+  margin-top: 0.25rem;
+}
+
+/* Project links and buttons */
+.project-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.project-links a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-text-primary);
+  border-radius: 4px;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.project-links a:hover {
+  background: var(--color-text-primary);
+  color: var(--color-bg-primary);
+}
+
+/* Project modal specific styles */
+.project-full-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.project-full-header h2 {
+  margin-bottom: 1rem;
+}
+
+.project-full-content {
+  margin-bottom: 2rem;
+}
+
+.project-full-content img {
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem 0;
+  border-radius: 4px;
+}
+
+/* Responsive styles for projects section */
+@media (max-width: 768px) {
+  #projects-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .project-links {
+    flex-direction: column;
+  }
+  
+  .project-links a {
+    width: 100%;
+    text-align: center;
+  }
 }

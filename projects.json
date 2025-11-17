@@ -1,0 +1,46 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "E-Commerce Dashboard",
+      "description": "A responsive admin dashboard for managing online store inventory, orders, and customer data.",
+      "thumbnail": "https://via.placeholder.com/600x400?text=E-Commerce+Dashboard",
+      "technologies": ["React", "Redux", "Chart.js", "Styled Components"],
+      "category": ["Frontend", "Dashboard"],
+      "links": {
+        "live": "https://example.com/dashboard",
+        "source": "https://github.com/username/dashboard"
+      },
+      "featured": true,
+      "content": "<p>This e-commerce dashboard provides store owners with a comprehensive view of their business performance, inventory levels, and customer interactions.</p><h3>Key Features</h3><ul><li>Real-time sales analytics with customizable date ranges</li><li>Inventory management with low-stock alerts</li><li>Customer segmentation and behavior analysis</li><li>Order processing workflow</li></ul><h3>Technical Challenges</h3><p>One of the main challenges was optimizing the dashboard for performance while handling large datasets. I implemented virtualized lists and data pagination to ensure smooth scrolling and quick load times even with thousands of products or orders.</p><p>Another challenge was creating an intuitive interface that presented complex data in an accessible way. I used Chart.js for data visualization and implemented a system of progressive disclosure to prevent overwhelming users with too much information at once.</p>"
+    },
+    {
+      "id": 2,
+      "title": "Weather App",
+      "description": "A minimalist weather application with location-based forecasts and animated visualizations.",
+      "thumbnail": "https://via.placeholder.com/600x400?text=Weather+App",
+      "technologies": ["JavaScript", "CSS", "OpenWeather API", "Geolocation API"],
+      "category": ["Frontend", "API Integration"],
+      "links": {
+        "live": "https://example.com/weather",
+        "source": "https://github.com/username/weather-app"
+      },
+      "featured": false,
+      "content": "<p>This weather application provides users with current conditions and forecasts based on their location or any searched city.</p><h3>Key Features</h3><ul><li>Current conditions with visual indicators</li><li>5-day forecast with hourly breakdowns</li><li>Location-based automatic weather using the Geolocation API</li><li>Search functionality for any city worldwide</li><li>Animated weather indicators that change based on conditions and time of day</li></ul><h3>Technical Implementation</h3><p>The app uses the OpenWeather API to fetch weather data and the browser's Geolocation API to determine the user's location. CSS animations are used to create weather effects like rain, snow, and clouds that match the current conditions.</p><p>I implemented a responsive design that works well on both mobile and desktop, with special attention to touch interactions for mobile users.</p>"
+    },
+    {
+      "id": 3,
+      "title": "Portfolio Blog",
+      "description": "A minimalist personal blog and portfolio site with a focus on readability and user experience.",
+      "thumbnail": "https://via.placeholder.com/600x400?text=Portfolio+Blog",
+      "technologies": ["HTML", "CSS", "JavaScript", "Node.js"],
+      "category": ["Frontend", "Full Stack"],
+      "links": {
+        "live": "https://speakhuman.dev",
+        "source": "https://github.com/username/portfolio-blog"
+      },
+      "featured": true,
+      "content": "<p>This portfolio blog was designed with a focus on making technology more human-friendly through elegant, intuitive interfaces. The minimalist design puts the focus on content while providing a seamless user experience.</p><h3>Key Features</h3><ul><li>Responsive design that works on all devices</li><li>Dynamic content loading from JSON data</li><li>Accessible modal dialogs for blog posts</li><li>Performance optimizations including resource preloading</li><li>Security features including XSS protection</li></ul><h3>Technical Implementation</h3><p>The site is built with vanilla HTML, CSS, and JavaScript without any frameworks to ensure maximum performance. A simple Node.js server handles file serving for local development.</p><p>Accessibility was a primary concern, with features like keyboard navigation support, proper heading hierarchy, ARIA attributes, and focus management implemented throughout.</p>"
+    }
+  ]
+}
