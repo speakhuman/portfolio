@@ -1,0 +1,70 @@
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Accessibility Test Report</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+                h1, h2, h3 { color: #333; }
+                .summary { display: flex; margin-bottom: 20px; }
+                .summary-box { padding: 15px; margin-right: 15px; border-radius: 5px; color: white; }
+                .violations { background-color: #d9534f; }
+                .passes { background-color: #5cb85c; }
+                .violation { background-color: #f9f9f9; padding: 15px; margin-bottom: 15px; border-left: 5px solid #d9534f; }
+                .critical { border-left-color: #d9534f; }
+                .serious { border-left-color: #f0ad4e; }
+                .moderate { border-left-color: #5bc0de; }
+                .minor { border-left-color: #5cb85c; }
+                .affected-elements { margin-top: 10px; }
+                .element { font-family: monospace; background-color: #eee; padding: 5px; margin-bottom: 5px; }
+                pre { background-color: #f5f5f5; padding: 10px; overflow-x: auto; }
+            </style>
+        </head>
+        <body>
+            <h1>Accessibility Test Report</h1>
+            <p>URL: http://localhost:3000/</p>
+            <p>Date: 2025-11-18T05:00:47.029Z</p>
+            
+            <div class="summary">
+                <div class="summary-box violations">
+                    <h2>Violations: 1</h2>
+                </div>
+                <div class="summary-box passes">
+                    <h2>Passes: 28</h2>
+                </div>
+            </div>
+            
+            <h2>Violations</h2>
+        
+                <div class="violation serious">
+                    <h3>Elements must have sufficient color contrast (serious)</h3>
+                    <p><strong>Description:</strong> Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds</p>
+                    <p><strong>Help URL:</strong> <a href="https://dequeuniversity.com/rules/axe/3.1/color-contrast?application=axeAPI" target="_blank">https://dequeuniversity.com/rules/axe/3.1/color-contrast?application=axeAPI</a></p>
+                    <p><strong>Tags:</strong> cat.color, wcag2aa, wcag143</p>
+                    <div class="affected-elements">
+                        <p><strong>Affected Elements (1):</strong></p>
+                
+                    <div class="element">
+                        <p><span class="theme-toggle-icon dark-icon" aria-hidden="true">🌙</span></p>
+                        <p><strong>Failure Summary:</strong> Fix any of the following:
+  Element has insufficient color contrast of 1.66 (foreground color: #000000, background color: #333333, font size: 14.4pt, font weight: normal). Expected contrast ratio of 4.5:1</p>
+                    </div>
+                    </div></div>
+            <h2>Test Details</h2>
+            <pre id="test-details">{}</pre>
+            <script>
+                document.getElementById("test-details").textContent = JSON.stringify(
+                    {
+                        "url": window.location.href,
+                        "timestamp": new Date().toISOString(),
+                        "violations": 1,
+                        "passes": 28
+                    }, 
+                    null, 2
+                );
+            </script>
+        </body>
+        </html>
+        

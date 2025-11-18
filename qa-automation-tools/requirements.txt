@@ -1,0 +1,32 @@
+# Accessibility Testing
+pytest>=7.0.0
+selenium>=4.10.0
+axe-selenium-python>=2.1.6
+webdriver-manager>=3.8.0
+pytest-html>=4.0.0
+
+# API Testing
+requests>=2.28.0
+jsonschema>=4.17.0
+pytest-xdist>=3.3.0
+
+# Performance Testing
+# Note: Using more flexible version requirements for better compatibility
+locust>=2.15.0
+pyzmq>=25.0.0
+# Note: gevent has compatibility issues with Python 3.13+
+# Only install on compatible Python versions
+gevent>=22.10.2; python_version < '3.13'
+
+# Battery Simulation Testing
+psutil>=5.9.0
+# Note: Using more flexible version requirements for matplotlib and numpy
+# These can be problematic on newer Python versions with strict pinning
+matplotlib>=3.7.0; python_version < '3.13'
+matplotlib>=3.8.0; python_version >= '3.13'
+numpy>=1.24.0; python_version < '3.13'
+numpy>=1.26.0; python_version >= '3.13'
+
+# Common
+pytest-metadata>=3.0.0
+python-dotenv>=1.0.0

@@ -1,0 +1,46 @@
+{
+  "summary": {
+    "url": "http://localhost:3000/",
+    "num_requests": 5,
+    "min_time": 0.0034759044647216797,
+    "max_time": 0.012130022048950195,
+    "avg_time": 0.006230592727661133,
+    "median_time": 0.005325794219970703,
+    "p90_time": 0.009426450729370118,
+    "p95_time": 0.010778236389160156,
+    "p99_time": 0.011859664916992188,
+    "std_dev": 0.0033858011250371928
+  },
+  "requests": [
+    {
+      "url": "http://localhost:3000/",
+      "status_code": 200,
+      "load_time": 0.012130022048950195,
+      "timestamp": "2025-11-17T21:00:47.836341"
+    },
+    {
+      "url": "http://localhost:3000/",
+      "status_code": 200,
+      "load_time": 0.0034759044647216797,
+      "timestamp": "2025-11-17T21:00:48.840564"
+    },
+    {
+      "url": "http://localhost:3000/",
+      "status_code": 200,
+      "load_time": 0.00537109375,
+      "timestamp": "2025-11-17T21:00:49.847475"
+    },
+    {
+      "url": "http://localhost:3000/",
+      "status_code": 200,
+      "load_time": 0.005325794219970703,
+      "timestamp": "2025-11-17T21:00:50.854047"
+    },
+    {
+      "url": "http://localhost:3000/",
+      "status_code": 200,
+      "load_time": 0.004850149154663086,
+      "timestamp": "2025-11-17T21:00:51.860243"
+    }
+  ]
+}
